@@ -1,0 +1,23 @@
+{
+  "name": "yelpbot",
+  "version": "1.0.0",
+  "description": "YelpBot is a discord bot that helps users find their desired business with a given command",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattJNuval/YelpBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MattJNuval/YelpBot/issues"
+  },
+  "homepage": "https://github.com/MattJNuval/YelpBot#readme",
+  "dependencies": {
+    "discord.js": "^11.6.1",
+    "yelp-fusion": "^3.0.0"
+  }
+}
