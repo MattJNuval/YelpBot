@@ -29,6 +29,16 @@ discordClient.on('message', message => {
     }
 
     // TODO: Implement and configure searchAnywhere(topic, location) command
+    if (message.content.substring(0, 6) == '!find ' && message.content.includes(' !near ')) {
+        for (var i = 0; i < message.content.length; i++) {
+            if (message.content.substring(i, i + 7) == ' !near ') {
+                var topic = message.content.substring(6, i + 1);
+                var location = message.content.substring(i + 7, message.content.length);
+                searchAnyWhere(topic, location);
+                break;
+            }
+        }
+    }
 
     // TODO: Implement and configure search engine command
     if (message.content.substring(0, 6) == '!find ') {
@@ -42,7 +52,14 @@ discordClient.on('message', message => {
 }); 
 
 function searchAnyWhere(topic, location) {
-    // TODO: Implement code
+    yelpClient.search({
+        term: topic,
+        location: location,
+    }).then(response => {
+
+    }).catch(e => {
+
+    });
 }
 
 function searchInCsun(topic) {
