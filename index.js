@@ -33,21 +33,52 @@ discordClient.on('message', message => {
     }
 
     // TODO: Implement and configure searchAnywhere(topic, location) command
-
-    // TODO: Implement and configure search engine command
-    if (message.content.includes('!find ')) {
-
-        console.log('Sent: ' + message.content);
-        var topic = message.content.substring(6, message.content.length)
-        searchInCsun(topic);
-        setTimeout(function () {
-            message.channel.send(results + '');
-        }, 3000);
+    if (message.content.substring(0, 6) == '!find ' && message.content.includes(' -near ')) {
+        results = '';
+        for (var i = 0; i < message.content.length; i++) {
+            if (message.content.substring(i, i + 7) == ' -near ') {
+                var topic = message.content.substring(6, i + 1);
+                var location = message.content.substring(i + 7, message.content.length);
+                searchAnyWhere(topic, location);
+                setTimeout(function () {
+                    message.channel.send(results + '');
+                }, 3000);
+                break;
+            }
+        }
+    } else if (message.content.substring(0, 6) == '!find ') {
+        results = '';
+        searchInCsun(message.content.substring(6, message.content.length));
     }
 }); 
 
 function searchAnyWhere(topic, location) {
-    // TODO: Implement code
+    yelpClient.search({
+        term: topic,
+        location: location,
+    }).then(response => {
+        results += 'Here is our top three picks for \'' + topic + '\' near \'' + location + '\'\n\n';
+        for (var i = 0; i < 3; i++) {
+            var name = response.jsonBody.businesses[i].name;
+            var rating = response.jsonBody.businesses[i].rating;
+            var reviewCount = response.jsonBody.businesses[i].review_count;
+            var price = response.jsonBody.businesses[i].price;
+            var url = response.jsonBody.businesses[i].url;
+            var address = response.jsonBody.businesses[i].location.address1;
+            var city = response.jsonBody.businesses[i].location.city;
+            var state = response.jsonBody.businesses[i].location.state;
+            var zipCode = response.jsonBody.businesses[i].location.zip_code;
+            var counter = i + 1;
+            results += counter + ')\n' + 'Name: ' + name + ' ' + '(' + price + ')' + '\n'
+                + 'Rating: ' + rating + ' stars (' + reviewCount + ')' + '\n'
+                + 'Address: ' + address + ', ' + city + ', ' + state + ' ' + zipCode + '\n'
+                + 'URL: ' + url + '\n\n';
+        }
+
+    }).catch(e => {
+        console.log(e);
+        results = '\'' + topic + '\'' + ' is not found.';
+    });
 }
 
 function searchInCsun(topic) {
