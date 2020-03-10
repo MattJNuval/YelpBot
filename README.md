@@ -39,9 +39,11 @@ Keep in mind:
 
 Once index.js is running, in your Discord server, you can invoke the following commands: 
 
-> !find TERM (to find a business near fix location which is Northridge, CA)
+```
+!find TERM (to find a business near fix location which is Northridge, CA)
 
-> !find TERM -near LOCATION  (to find a business near a given location) 
+!find TERM -near LOCATION  (to find a business near a given location) 
+```
 
 ## Contributors
 * Mathew Nuval | Project Owner
