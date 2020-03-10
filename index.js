@@ -29,7 +29,7 @@ discordClient.on('message', message => {
     }
 
     if (message.content.includes('!find')) {
-        message.channel.send('Please enter a term to find (i.e !find Coffee)');
+        message.channel.send('Please enter a term to find (i.e !find Coffee, !find Coffee -near Koreatown)');
     }
 
     // TODO: Implement and configure searchAnywhere(topic, location) command
