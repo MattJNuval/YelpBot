@@ -8,7 +8,7 @@ const discordClient = new Discord.Client();
 const yelpClient = Yelp.client('hkkJIKWdwY1z1mnqBkp711ceL7Gx14oUa9Z7brHqklFM9fHbjeOWU_6NmWNGKqUYPrE0ilZIWMvzF4R87eGXAZ14dWHFzqYgRscBE7jX6TByS9fAYGSPKEQe5qAwXnYx');
 
 // copy token in the token variable
-const token = 'NjgzNDIwMzUxNDM4NjUxMzky.Xmc4pA.Fw_43hPa5sjrl3vJpTRCc79JVR8';
+const token = 'ADD TOKEN HERE';
 
 // instance variables
 //var topic = ' ';
@@ -28,6 +28,10 @@ discordClient.on('message', message => {
         return;
     }
 
+    if (message.content.includes('!find')) {
+        message.channel.send('Please enter a term to find (i.e !find Coffee)');
+    }
+
     // TODO: Implement and configure searchAnywhere(topic, location) command
     if (message.content.substring(0, 6) == '!find ' && message.content.includes(' -near ')) {
         results = '';
@@ -45,9 +49,6 @@ discordClient.on('message', message => {
     } else if (message.content.substring(0, 6) == '!find ') {
         results = '';
         searchInCsun(message.content.substring(6, message.content.length));
-        setTimeout(function () {
-            message.channel.send(results + '');
-        }, 3000);
     }
 }); 
 
