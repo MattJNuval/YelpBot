@@ -8,7 +8,7 @@ const discordClient = new Discord.Client();
 const yelpClient = Yelp.client('hkkJIKWdwY1z1mnqBkp711ceL7Gx14oUa9Z7brHqklFM9fHbjeOWU_6NmWNGKqUYPrE0ilZIWMvzF4R87eGXAZ14dWHFzqYgRscBE7jX6TByS9fAYGSPKEQe5qAwXnYx');
 
 // copy token in the token variable
-const token = 'NjgzNDIwMzUxNDM4NjUxMzky.XmMoMw.YXgwYg3H3ZFg66gDQ967yKLPX20';
+const token = 'ADD TOKEN HERE';
 
 // instance variables
 //var topic = ' ';
