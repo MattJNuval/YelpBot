@@ -28,12 +28,12 @@ discordClient.on('message', message => {
         return;
     }
 
-    if (message.content.includes('!find')) {
-        message.channel.send('Please enter a term to find (i.e !find Coffee, !find Coffee -near Koreatown)');
+    if (message.content.includes('!yelp help')) {
+        message.channel.send('Please enter a term to find (i.e !yelp Coffee -near Koreatown)');
     }
 
     // TODO: Implement and configure searchAnywhere(topic, location) command
-    if (message.content.substring(0, 6) == '!find ' && message.content.includes(' -near ')) {
+    if (message.content.substring(0, 6) == '!yelp ' && message.content.includes(' -near ')) {
         results = '';
         for (var i = 0; i < message.content.length; i++) {
             if (message.content.substring(i, i + 7) == ' -near ') {
@@ -46,7 +46,7 @@ discordClient.on('message', message => {
                 break;
             }
         }
-    } else if (message.content.substring(0, 6) == '!find ') {
+    } else if (message.content.substring(0, 6) == '!yelpInCSUN ') {
         results = '';
         searchInCsun(message.content.substring(6, message.content.length));
     }
